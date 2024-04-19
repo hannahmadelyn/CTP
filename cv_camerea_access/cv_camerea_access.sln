@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "cv_camerea_access", "cv_camerea_access\cv_camerea_access.pyproj", "{EAC91D1F-2F89-4ECA-841A-459ACEACBAAF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAC91D1F-2F89-4ECA-841A-459ACEACBAAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAC91D1F-2F89-4ECA-841A-459ACEACBAAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {51964143-5039-44DC-B178-0DAB3CC0C195}
+	EndGlobalSection
+EndGlobal
