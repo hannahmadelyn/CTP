@@ -79,7 +79,7 @@ print(names2)
 
 #dictionaries
 hash('name')
-#lists are not hash-able
+#lists are not hash-able, initial allocated doesnt change
 #literals vs constructor
 types = {'name' : str, 'age':int, 'address':str}
 types2 = dict(name=str, age=int, adress=str)
