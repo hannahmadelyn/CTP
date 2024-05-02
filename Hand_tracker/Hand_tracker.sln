@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Hand_tracker", "Hand_tracker\Hand_tracker.pyproj", "{2B53381D-CD68-42D4-8D18-22940408CE23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2B53381D-CD68-42D4-8D18-22940408CE23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B53381D-CD68-42D4-8D18-22940408CE23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5AE42DB8-F0D5-4D10-A0C9-36E47B7B0CD2}
+	EndGlobalSection
+EndGlobal
