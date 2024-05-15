@@ -31,7 +31,7 @@ videoInput = cv.VideoCapture("Mantis_Shrimp_Destroys_Clam.mp4")
 
 trackerType =['KCF', 'MOSSE', 'TLD', 'MIL', 'CSRT']
 
-trackerSelect = trackerType[4];
+trackerSelect = trackerType[4]
 if trackerSelect == 'KCF':
     tracker = cv.TrackerKCF.create()
     edgeTracker = cv.TrackerKCF.create()
