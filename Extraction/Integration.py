@@ -2,12 +2,16 @@ from mimetypes import init
 import numpy as np
 import sys
 import cv2 as cv
+
 print("OpenCV version: ", cv.__version__)
 
+# Load the video
 videoInput = cv.VideoCapture("C:\\Users\\Avi\\Mantis_Shrimp_Destroys_Clam.mp4")
 
+# Tracker selection
 trackerType = ['KCF', 'MOSSE', 'TLD', 'MIL', 'CSRT']
 trackerSelect = trackerType[4]
+
 if trackerSelect == 'KCF':
     tracker = cv.TrackerKCF.create()
     edgeTracker = cv.TrackerKCF.create()
@@ -31,23 +35,32 @@ if not videoInput.isOpened():
     print("Unable to open video.")
     sys.exit()
 
+# Read the first frame
 success, frame = videoInput.read()
+if not success:
+    print("Unable to read video file.")
+    sys.exit()
+
 cv.imshow(trackerSelect, frame)
 
+# Set the video to the first frame
 videoInput.set(cv.CAP_PROP_POS_FRAMES, 0)
 
+# Check if the frame is empty
 if frame is None:
     print("Frame is empty.")
     sys.exit()
 
+# Select the ROI (Region of Interest)
 bbox = cv.selectROI(frame, False)
 print("Bounding Box selection: ", bbox)
 print("Frame Details, is frame selection true?: ", frame)
 
 if bbox == (0, 0, 0, 0):
-    print("invalid location. bounding box error.")
+    print("Invalid location. Bounding box error.")
     sys.exit()
 
+# Initialize tracker
 tracking = tracker.init(frame, bbox)
 edgeTracking = tracker.init(frame, bbox)
 
@@ -67,8 +80,11 @@ while videoInput.isOpened():
 
     # Save frames every half second
     if frame_num % interval == 0 and key_frames_count < 10:
+        # Crop the frame to the bounding box
+        x, y, w, h = bbox
+        cropped_frame = frame[int(y):int(y+h), int(x):int(x+w)]
         frame_path = f'key_frame_{key_frames_count}.jpg'
-        cv.imwrite(frame_path, frame)
+        cv.imwrite(frame_path, cropped_frame)
         key_frames_count += 1
 
     # Tracking logic
