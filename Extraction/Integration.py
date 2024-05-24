@@ -78,28 +78,24 @@ while videoInput.isOpened():
         print("Unable to read video file.")
         break
 
-    # Save frames every half second
-    if frame_num % interval == 0 and key_frames_count < 10:
-        # Crop the frame to the bounding box
-        x, y, w, h = bbox
-        cropped_frame = frame[int(y):int(y+h), int(x):int(x+w)]
-        frame_path = f'key_frame_{key_frames_count}.jpg'
-        cv.imwrite(frame_path, cropped_frame)
-        key_frames_count += 1
-
-    # Tracking logic
-    success, bbox = tracker.update(frame)
-    if success:
-        pointer1 = (int(bbox[0]), int(bbox[1]))
-        pointer2 = (int(bbox[0] + bbox[2]), int(bbox[1] + bbox[3]))
-        cv.rectangle(frame, pointer1, pointer2, (0, 255, 0), 2, 2)
-
+    # Perform edge detection on the frame
     edge = cv.Canny(frame, 160, 240)
+
+    # Tracking logic on edge detected frame
     success, edgeBbox = tracker.update(edge)
     if success:
         pointer1 = (int(edgeBbox[0]), int(edgeBbox[1]))
         pointer2 = (int(edgeBbox[0] + edgeBbox[2]), int(edgeBbox[1] + edgeBbox[3]))
         cv.rectangle(edge, pointer1, pointer2, (0, 255, 0), 2, 2)
+
+        # Extract the region inside the bounding box
+        roi_edge = edge[pointer1[1]:pointer2[1], pointer1[0]:pointer2[0]]
+
+        # Save frames every half second
+        if frame_num % interval == 0 and key_frames_count < 10:
+            frame_path = f'key_frame_{key_frames_count}.jpg'
+            cv.imwrite(frame_path, roi_edge)
+            key_frames_count += 1
 
     cv.imshow(trackerSelect, frame)
     cv.imshow("Edge Detection", edge)
